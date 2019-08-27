@@ -19,7 +19,7 @@ module GraphQL
     end
 
     describe 'Currency' do
-      ['isoCode', 'symbol', 'subunitToUnit', 'smallestDenomination'].each do |field_name|
+      %w[isoCode symbol subunitToUnit smallestDenomination].each do |field_name|
         it "defines #{field_name}" do
           expect_field_to_be_defined(Types::Currency, field_name)
         end
@@ -27,7 +27,7 @@ module GraphQL
     end
 
     describe 'Money' do
-      ['fractional', 'amount', 'currency', 'displayString'].each do |field_name|
+      %w[fractional amount currency displayString].each do |field_name|
         it "defines #{field_name}" do
           expect_field_to_be_defined(Types::Money, field_name)
         end

@@ -1,5 +1,7 @@
 # GraphQL::Types::Money
 
+[![Build Status](https://travis-ci.org/adHawk/graphql-types-money.svg?branch=master)](https://travis-ci.org/adHawk/graphql-types-money)
+
 Add support for the [Money gem](https://github.com/RubyMoney/money) in GraphQL.
 
 ## Installation

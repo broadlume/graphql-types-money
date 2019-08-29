@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    graphql-types-money (0.1.0)
+    graphql-types-money (0.2.0)
       graphql
       money
 

@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 # rubocop:disable Metrics/LineLength
 Gem::Specification.new do |spec|
   spec.name          = 'graphql-types-money'
-  spec.version       = '0.1.0'
+  spec.version       = '0.2.0'
   spec.authors       = ['Ian Ker-Seymer']
   spec.email         = ['i.kerseymer@gmail.com']
 

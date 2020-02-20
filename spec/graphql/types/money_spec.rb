@@ -35,7 +35,7 @@ module GraphQL
     end
 
     def expect_field_to_be_defined(type, field_name)
-      expect(type.get_field(field_name)).to be_a(GraphQL::Field)
+      expect(type.get_field(field_name)).to be_a(GraphQL::Schema::Field)
     end
   end
 end

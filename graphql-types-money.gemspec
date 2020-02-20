@@ -2,8 +2,6 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-
-# rubocop:disable Metrics/LineLength
 Gem::Specification.new do |spec|
   spec.name          = 'graphql-types-money'
   spec.version       = '0.2.0'

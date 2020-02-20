@@ -5,8 +5,8 @@ require 'graphql'
 
 module GraphQL
   module Types
-    ISO4217 = GraphQL::EnumType.define do
-      name 'ISO4217'
+    class ISO4217 < GraphQL::Schema::Enum
+      graphql_name 'ISO4217'
       description 'A valid ISO 4217 currency code string.'
 
       ::Money::Currency.all.uniq(&:name).sort_by(&:iso_code).each do |curr|
@@ -14,41 +14,33 @@ module GraphQL
       end
     end
 
-    Currency = GraphQL::ObjectType.define do
-      name 'Currency'
+    class Currency < GraphQL::Schema::Object
+      graphql_name 'Currency'
       description 'A currency as defined by the ISO 4217 standard.'
 
-      field :isoCode, ISO4217, 'The currency format as defined by IS0 4217.' do
-        resolve ->(obj, *) { obj.iso_code }
-      end
+      field :iso_code, ISO4217, 'The currency format as defined by IS0 4217.', null: false
 
-      field :symbol, types.String, 'The symbol for the currency (i.e. "€").'
+      field :symbol, String, 'The symbol for the currency (i.e. "€").', null: false
 
-      field :smallestDenomination do
-        type types.Int
-        description 'The smallest denomination of the currency.'
-        resolve ->(obj, *) { obj.smallest_denomination }
-      end
+      field :smallest_denomination, Integer, 'The smallest denomination of the currency.', null: false
 
-      field :subunitToUnit do
-        type types.Int
-        description 'Factor used to convert a subunit to a unit.'
-        resolve ->(obj, *) { obj.subunit_to_unit }
-      end
+      field :subunit_to_unit, Integer, 'Factor used to convert a subunit to a unit.', null: false
     end
 
-    Money = GraphQL::ObjectType.define do
-      name 'Money'
+    class Money < GraphQL::Schema::Object
+      graphql_name 'Money'
       description 'An object representing money, with an amount and currency.'
 
-      field :fractional, types.Int, 'Fractional unit value of a given currency.'
+      field :fractional, Integer, 'Fractional unit value of a given currency.', null: false
 
-      field :amount, types.Float, 'Numerical amount of the money.'
+      field :amount, Float, 'Numerical amount of the money.', null: false
 
-      field :currency, Currency
+      field :currency, Currency, null: false
 
-      field :displayString, types.String, 'Displayable string (i.e. "$1.00").' do
-        resolve ->(obj, *) { obj.format }
+      field :display_string, String, 'Displayable string (i.e. "$1.00").', null: false
+
+      def display_string
+        object.format
       end
     end
   end

@@ -8,7 +8,7 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Lint/UnneededCopEnableDirective:
+Lint/RedundantCopEnableDirective:
   Exclude:
     - 'graphql-types-money.gemspec'
 

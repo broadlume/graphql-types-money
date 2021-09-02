@@ -1,6 +1,6 @@
 inherit_from: .rubocop_todo.yml
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 Metrics/BlockLength:
